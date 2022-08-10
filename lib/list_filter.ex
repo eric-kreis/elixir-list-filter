@@ -16,7 +16,7 @@ defmodule ListFilter do
 
   def call(list) do
     string_numbers = Enum.filter(list, fn e -> Integer.parse(e) != :error end)
-    numbers = Enum.map(string_numbers, fn e -> elem(Integer.parse(e), 0) end)
+    numbers = Enum.map(string_numbers, fn e -> String.to_integer(e) end)
 
     Enum.reduce(numbers, 0, fn
       e, acc ->
